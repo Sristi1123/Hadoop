@@ -1,0 +1,11 @@
+NameNode: The master — stores metadata (directory tree, block locations). Does NOT store actual data.
+DataNode: The worker — stores actual data blocks on local disk.
+
+HDFS: Hadoop Distributed File System — designed for storing large files across multiple machines.
+Block: HDFS splits files into fixed-size blocks (default 128 MB). Each block is stored on a DataNode.
+
+Replication: Each block is copied N times across DataNodes (default = 3) for fault tolerance.
+Trash: Deleted files go here first. Acts as a safety net before permanent deletion.
+
+-put vs -copy: FromLocalIdentical — both upload from local to HDFS.
+-get vs -copy: ToLocalIdentical — both download from HDFS to local.

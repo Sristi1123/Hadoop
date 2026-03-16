@@ -1,0 +1,39 @@
+// Create an empty file
+    hdfs dfs -touchz /PROJECT/f1
+
+// Append from keyboard (stdin) to an HDFS file
+    hdfs dfs -appendToFile - /PROJECT/f1
+
+// Append a local file's content to an HDFS file
+    hdfs dfs -appendToFile "D:\hadoopsetup\data.txt" /PROJECT/f1
+
+// Read / Print an HDFS file to the terminal
+    hdfs dfs -cat /PROJECT/f1
+
+// Check file size / disk usage
+    # Show size of a specific file
+    hdfs dfs -du -h /PROJECT/f1
+
+    # Show size of all files inside a directory
+    hdfs dfs -du -h /PROJECT
+
+--> 5. Upload Files to HDFS
+        // Upload using -put
+            hdfs dfs -put "D:\hadoopsetup\data.txt" /PROJECT
+
+        // Upload using -copyFromLocal (identical to -put)
+            # First create the file locally if it doesn't exist
+            echo Hello Hadoop > test.txt
+
+            # Then upload it
+            hdfs dfs -copyFromLocal test.txt /PROJECT
+
+// Verify the upload
+    hdfs dfs -ls /PROJECT
+
+--> 6. Download Files from HDFS
+    // Download using -get
+        hdfs dfs -get /PROJECT/file1.txt D:\
+    
+    // Download using -copyToLocal (identical to -get)
+        hdfs dfs -copyToLocal /PROJECT/test.txt D:\

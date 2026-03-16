@@ -1,0 +1,34 @@
+# ── CLUSTER ──────────────────────────────────────────────────────────────────
+hdfs namenode -format            # Format NameNode (first time only)
+start-dfs.cmd                    # Start NameNode + DataNode
+start-yarn.cmd                   # Start ResourceManager + NodeManager
+stop-dfs.cmd                     # Stop NameNode + DataNode
+stop-yarn.cmd                    # Stop ResourceManager + NodeManager
+jps                              # List all running Java daemons
+hdfs dfsadmin -report            # Full cluster health report
+
+# ── DIRECTORIES ──────────────────────────────────────────────────────────────
+hdfs dfs -mkdir /FOLDER                        # Create a directory
+hdfs dfs -mkdir /A /B /C                       # Create multiple directories
+hdfs dfs -mkdir -p /A/B/C                      # Create nested directories
+hdfs dfs -ls /FOLDER                           # List directory contents
+hdfs dfs -ls /                                 # List HDFS root
+hdfs dfs -mv /OLD /NEW                         # Rename / Move directory
+hdfs dfs -cp /SOURCE /DEST                     # Copy directory
+hdfs dfs -rm -r /FOLDER                        # Delete (to Trash)
+hdfs dfs -rm -r -skipTrash /FOLDER             # Delete permanently
+
+# ── FILES ────────────────────────────────────────────────────────────────────
+hdfs dfs -touchz /FOLDER/file                  # Create empty file
+hdfs dfs -cat /FOLDER/file                     # Print file contents
+hdfs dfs -appendToFile - /FOLDER/file          # Append from keyboard
+hdfs dfs -appendToFile local.txt /FOLDER/file  # Append local file
+hdfs dfs -du -h /FOLDER                        # Show file/dir sizes
+
+# ── UPLOAD (Local → HDFS) ────────────────────────────────────────────────────
+hdfs dfs -put local.txt /FOLDER                # Upload file
+hdfs dfs -copyFromLocal local.txt /FOLDER      # Same as -put
+
+# ── DOWNLOAD (HDFS → Local) ──────────────────────────────────────────────────
+hdfs dfs -get /FOLDER/file D:\                 # Download file
+hdfs dfs -copyToLocal /FOLDER/file D:\         # Same as -get
