@@ -1,0 +1,34 @@
+1️--> -rm — Delete a file
+
+    Used to delete a single file in HDFS.
+
+    Syntax
+    hdfs dfs -rm /path/filename
+    Example
+    hdfs dfs -rm /PROJECT/file1.txt
+
+    * Deletes only the file, not folders.
+
+2️--> -rm -r — Delete a folder (directory)
+
+    Used to delete a directory and all its contents.
+
+    Syntax
+    hdfs dfs -rm -r /foldername
+    Example
+    hdfs dfs -rm -r /PROJECT
+
+    * Deletes folder + all files inside it.
+
+3️--> -rmdir — Remove empty folder
+
+    Used to delete only an empty directory.
+
+    Syntax
+    hdfs dfs -rmdir /foldername
+    Example
+    hdfs dfs -rmdir /DATA
+
+    * Works only if the folder is empty.
+
+    If files exist, it will show an error.

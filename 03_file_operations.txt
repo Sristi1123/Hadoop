@@ -4,18 +4,31 @@
 // Append from keyboard (stdin) to an HDFS file
     hdfs dfs -appendToFile - /PROJECT/f1
 
+--------------D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -appendToFile - /PROJECT/f1 --------------
+                Hello
+                Terminate batch job (Y/N)? y
+        
 // Append a local file's content to an HDFS file
     hdfs dfs -appendToFile "D:\hadoopsetup\data.txt" /PROJECT/f1
 
 // Read / Print an HDFS file to the terminal
     hdfs dfs -cat /PROJECT/f1
 
+-------------- D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -cat /PROJECT/f1 ----------------
+                Hello  
+                
 // Check file size / disk usage
     # Show size of a specific file
     hdfs dfs -du -h /PROJECT/f1
 
     # Show size of all files inside a directory
     hdfs dfs -du -h /PROJECT
+
+    ----------- D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -du /PROJECT --------------
+                0   0   /PROJECT/data.txt
+                7   7   /PROJECT/f1
+                14  14  /PROJECT/file1.txt
+                15  15  /PROJECT/test.txt
 
 --> 5. Upload Files to HDFS
         // Upload using -put
