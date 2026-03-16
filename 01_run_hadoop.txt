@@ -1,0 +1,64 @@
+--> 1. Start the Hadoop Cluster
+Step 1 — Navigate to the Hadoop bin folder
+bashcd D:\hadoopsetup\hadoop-3.2.4\bin
+
+Navigate into the Hadoop bin directory where all executable commands live.
+
+--> Step 2 — Format the NameNode (First Time Only)
+bashhdfs namenode -format
+
+--> Step 3 — Navigate to the sbin folder
+bashcd ..\sbin
+
+The sbin directory contains scripts to start and stop Hadoop daemons.
+
+--> Step 4 — Start HDFS (NameNode + DataNode)
+bashstart-dfs.cmd
+
+What it does:
+Starts two HDFS daemons in separate background windows:
+
+NameNode — manages the filesystem namespace (directory tree, file metadata, block locations)
+DataNode — stores the actual data blocks on local disk
+
+--> Step 5 — Start YARN (ResourceManager + NodeManager)
+bashstart-yarn.cmd
+
+What it does:
+Starts the YARN resource management layer needed to run MapReduce jobs:
+
+ResourceManager — allocates cluster CPU/memory resources across applications
+NodeManager — manages resources on the local node, runs job containers
+
+2. Verify the Cluster
+Check all running daemons
+bashjps
+
+Java Process Status — lists all running Java processes.
+After a successful startup you should see exactly these 4 daemons:
+
+2200  NameNode
+9604  DataNode
+2488  ResourceManager
+13156 NodeManager
+10864 Jps
+
+If any daemon is missing, check its log file in D:\hadoopsetup\hadoop-3.2.4\logs\.
+
+Full cluster health report
+bashhdfs dfsadmin -report
+
+What it does:
+Prints a detailed status report of the HDFS cluster including:
+
+Total configured capacity
+DFS used space and remaining space
+Number of live DataNodes
+Block replication and corruption status
+
+
+Expected output (summary):
+Configured Capacity: 367000547328 (341.80 GB)
+DFS Remaining:       204342624256 (190.31 GB)
+Live datanodes (1):
+  Name: 127.0.0.1:9866 — Last contact: Mon Mar 16 15:07:51 IST 2026
