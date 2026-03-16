@@ -1,0 +1,28 @@
+// Create a single directory
+    hdfs dfs -mkdir /DATA
+
+// Create multiple directories at once
+    hdfs dfs -mkdir /ABC /XYZ /TEST
+
+// Create nested directories (recursive)
+    hdfs dfs -mkdir -p /DATA/BIGDATA/HADOOP
+
+// List contents of a directory
+
+    # List a specific directory
+    hdfs dfs -ls /DATA
+
+    # List the HDFS root
+    hdfs dfs -ls /
+
+// Rename / Move a directory
+    hdfs dfs -mv /ABC /PROJECT
+
+// Copy a directory (source is preserved)
+    hdfs dfs -cp /PROJECT /BACKUP
+
+//Delete a directory (moves to Trash)
+    hdfs dfs -rm -r /DATA
+
+// Permanently delete (skip Trash)
+    hdfs dfs -rm -r -skipTrash /TEST
