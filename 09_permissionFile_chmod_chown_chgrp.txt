@@ -35,6 +35,12 @@ r - - = 4 → read only
 --> Change group only: hdfs dfs -chown :biggroup /BACKUP/file1.txt
 --> Apply to all files (recursive): hdfs dfs -chown -R srist:supergroup /BACKUP
 
+📌 chgrp (change group)
+👉 Used to change only the group of a file or directory
+
+--> hdfs dfs -chgrp group /BACKUP/file1.txt  --> Changes group of file1.txt to group
+
+🔹 Recursive (all files inside folder): hdfs dfs -chgrp -R biggroup /BACKUP
 
 👉 Trick to remember:
 read (r) = 4
@@ -97,3 +103,12 @@ Without x → cannot access folder
 chmod dir → affects only directory
 Controls access to folder
 Use -R → for all files inside
+
+📌 Basic Difference
+🔹 chown
+👉 Changes owner (user) + group
+hdfs dfs -chown user:group file
+
+🔹 chgrp
+👉 Changes only group
+hdfs dfs -chgrp group file
