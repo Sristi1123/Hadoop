@@ -1,0 +1,32 @@
+-->Step 1 — Copy file1.txt from /BACKUP into /XYZ
+hdfs dfs -cp /BACKUP/file1.txt /XYZ
+
+--> Step 2 — Verify /XYZ now has both files
+hdfs dfs -ls /XYZ
+
+--> Step 3 — Move file2.txt from /XYZ into /BACKUP
+hdfs dfs -mv /XYZ/file2.txt /BACKUP
+
+--> Step 4 — Verify /BACKUP now has both files
+hdfs dfs -ls /BACKUP
+
+
+The hdfs dfs -count command counts the number of directories, files, and bytes inside any HDFS path.
+
+        hdfs dfs -count <path>
+
+        hdfs dfs -count /BACKUP
+        ```
+
+        **Output:**
+        ```
+                1            2                 33   /BACKUP
+
+        
+DIR_COUNT = 1 → This means there is 1 directory, which is /BACKUP itself.
+
+FILE_COUNT = 2 → There are 2 files inside the folder, like file1.txt and file2.txt.
+
+CONTENT_SIZE = 33 → The total size of all files is 33 bytes (for example, 17 bytes + 16 bytes).
+
+PATHNAME = /BACKUP → This is the folder path you checked.
