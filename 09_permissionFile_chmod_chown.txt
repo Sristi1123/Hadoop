@@ -26,6 +26,16 @@ r - - = 4 → read only
 - - x = 1 → execute only
 - - - = 0 → no permission
 
+--> 📌 chown (change owner)
+👉 Used to change owner and group of a file/directory 
+
+--> Change owner only: hdfs dfs -chown me /BACKUP/file1.txt
+--> Change owner + group: hdfs dfs -chown sn:supergroup /BACKUP/file1.txt
+--> hdfs dfs -ls /BACKUP  (check from this command)
+--> Change group only: hdfs dfs -chown :biggroup /BACKUP/file1.txt
+--> Apply to all files (recursive): hdfs dfs -chown -R srist:supergroup /BACKUP
+
+
 👉 Trick to remember:
 read (r) = 4
 write (w) = 2
