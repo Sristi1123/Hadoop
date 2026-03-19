@@ -1,19 +1,19 @@
 --> 1. Start the Hadoop Cluster
 Step 1 — Navigate to the Hadoop bin folder
-bashcd D:\hadoopsetup\hadoop-3.2.4\bin
+cd D:\hadoopsetup\hadoop-3.2.4\bin
 
 Navigate into the Hadoop bin directory where all executable commands live.
 
 --> Step 2 — Format the NameNode (First Time Only)
-bashhdfs namenode -format
+hdfs namenode -format
 
 --> Step 3 — Navigate to the sbin folder
-bashcd ..\sbin
+cd ..\sbin
 
 The sbin directory contains scripts to start and stop Hadoop daemons.
 
 --> Step 4 — Start HDFS (NameNode + DataNode)
-bashstart-dfs.cmd
+start-dfs.cmd
 
 What it does:
 Starts two HDFS daemons in separate background windows:
@@ -22,7 +22,7 @@ NameNode — manages the filesystem namespace (directory tree, file metadata, bl
 DataNode — stores the actual data blocks on local disk
 
 --> Step 5 — Start YARN (ResourceManager + NodeManager)
-bashstart-yarn.cmd
+start-yarn.cmd
 
 What it does:
 Starts the YARN resource management layer needed to run MapReduce jobs:
@@ -32,7 +32,7 @@ NodeManager — manages resources on the local node, runs job containers
 
 2. Verify the Cluster
 Check all running daemons
-bashjps
+jps
 
 Java Process Status — lists all running Java processes.
 After a successful startup you should see exactly these 4 daemons:
