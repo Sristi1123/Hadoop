@@ -1,0 +1,18 @@
+--> Step 1 — Confirm the current HDFS root structure
+hdfs dfs -ls /
+
+--> Step 2 — Confirm both target directories are empty
+# Check /BACKUP — no output means it is empty
+hdfs dfs -ls /BACKUP
+
+# Check /XYZ — no output means it is empty
+hdfs dfs -ls /XYZ
+
+--> Step 3 — Create the first local file
+echo "Hello Hadoop" > file1.txt
+
+--> Step 4 — Upload file1.txt into /BACKUP
+hdfs dfs -put file1.txt /BACKUP
+
+--> Step 5 — Verify file1.txt landed in /BACKUP
+hdfs dfs -ls /BACKUP
