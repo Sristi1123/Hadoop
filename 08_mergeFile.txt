@@ -1,0 +1,30 @@
+-->Step 1 — Merge all files in /BACKUP into one local output file
+hdfs dfs -getmerge /BACKUP file:///"D:/hadoopFiles/output.txt"
+
+--> Step 2 — Verify the merged output on local disk
+type D:\hadoopFiles\output.txt
+
+✅ When is -getmerge useful?
+
+In MapReduce output, results are stored in many files like part-00000, part-00001.
+👉 -getmerge combines them into one single file
+
+When combining log files, like daily logs in a folder
+👉 it merges all logs into one file
+
+When downloading a dataset from HDFS
+👉 it joins all chunks and gives one complete file
+
+It is faster than using -get multiple times
+👉 no need to download each file and combine manually
+
+✅ Difference between -getmerge and -get
+
+-get
+👉 Used for one file
+👉 Downloads that file as it is
+
+-getmerge
+👉 Used for a directory (many files)
+👉 Merges all files and saves as one file
+

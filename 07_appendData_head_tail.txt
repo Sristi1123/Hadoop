@@ -1,0 +1,25 @@
+--> add multiple data in file
+(echo Fourth Line & echo Fifth Line) | hdfs dfs -appendToFile - /BACKUP/file1.txt
+
+** -head, -tail and Force Overwrite with -put -f
+
+--> Step 1 — Read the first few bytes of a file using -head
+hdfs dfs -head /BACKUP/file1.txt
+
+--> Step 2 — Read the last few bytes of a file using -tail
+hdfs dfs -tail /BACKUP/file1.txt
+
+                **  For a single-line file, -head and -tail show the same content.
+                ** The difference only matters with large multi-line files.
+
+--> Step 3 — Correct way to write a multi-line file on Windows CMD
+(echo Hello World & echo Second Line & echo Third Line) > file1.txt
+
+--> Step 4 — Force overwrite again with the corrected file
+hdfs dfs -put -f file1.txt /BACKUP
+
+--> Verify with -tail
+hdfs dfs -tail /BACKUP/file1.txt
+
+— Attempt Linux-style piping (does NOT work on Windows CMD)
+hdfs dfs -cat /BACKUP/file1.txt | head -n 2
