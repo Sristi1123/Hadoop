@@ -1,0 +1,81 @@
+Task 1:
+    1. Create a directory/project1 in HDFS
+    2. Copy data.txt from local to /project1
+    3. display the content of file
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -mkdir /project1
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -put "D:\hadoopFiles\data.txt" /project1
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -put "D:\hadoopFiles\data.txt" /project1
+put: `/project1/data.txt': File exists
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -ls /project1
+Found 1 items
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -cat /project1/data.txt
+
+
+2. You have a file /project1/data.txt in HDFS
+Tasks:
+    1. Append content from local file extra.txt
+    2. display updated content 
+    3. check file size
+
+3. You are given path /project2
+Tasks:
+    1. check if /project2 exists
+    2. check if it is a directory
+    3. check if /project2/file1.txt is a file
+    4. check if /project2/file1.txt is empty
+
+4. You are working inside hdfs with directory /data
+Tasks:
+    1. copy file /data/file1.txt to /backup 
+    2. Move /data/file2.txt to /backup
+    3. delete /data/file3.txt
+    4. delete /data directory with all files
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -mkdir /data
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -touchz /data/file.txt
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -ls /data
+Found 1 items
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -cp /data/file1.txt /BACKUP
+cp: `/data/file1.txt': No such file or directory
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -cp /data/file.txt /BACKUP
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -touchz /BACKUP/file2.txt
+touchz: `/BACKUP/file2.txt': Not a zero-length file
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -mv /BACKUP/file2.txt /data
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -ls /data
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -rm /data/file2.txt
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -rm -r /data
+
+5. You have multiple files in /logs directory in hdfs
+Tasks:
+    1. merge all files in /logs into a single local file final.txt
+    2. open and verify the merged file in local system
+    3. check the checksum of one hdfs file
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -getmerge /logs final.txt
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>dir final.txt
+ Volume in drive D is New Volume
+ Volume Serial Number is 3CFC-17D7
+
+ Directory of D:\hadoopsetup\hadoop-3.2.4\sbin
+
+23-03-2026  15:49                 0 final.txt
+               1 File(s)              0 bytes
+               0 Dir(s)  183,300,546,560 bytes free
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>type final.txt
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -checksum /logs/data.txt
+/logs/data.txt  MD5-of-0MD5-of-0CRC32   00000000000000000000000070bc8f4b72a86921468bf8e8441dce51

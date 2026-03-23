@@ -1,0 +1,108 @@
+✅ 1. -setrep command
+Means HDFS will try to keep 2 copies of this file across DataNodes.
+
+✅ 2. -test -e command
+# Step 1 — Test if /BACKUP exists
+hdfs dfs -test -e /BACKUP
+echo %ERRORLEVEL%         :: Expected: 0 (exists)
+
+# Step 2 — Test if /abc exists
+hdfs dfs -test -e /abc
+echo %ERRORLEVEL%         :: Expected: 1 (does not exist)
+
+# Step 3 — Confirm root structure
+hdfs dfs -ls /
+
+# Step 4 — Test if /BACKUP is a directory
+hdfs dfs -test -d /BACKUP
+echo %ERRORLEVEL%         :: Expected: 0
+
+# Step 5 — Test if a specific file exists
+hdfs dfs -test -f /BACKUP/file1.txt
+echo %ERRORLEVEL%         :: Expected: 0
+
+# Step 6 — Test if that file is non-empty
+hdfs dfs -test -s /BACKUP/file1.txt
+echo %ERRORLEVEL%         :: Expected: 0 (file has content)
+
+🔹 What is -expunge?
+hdfs dfs -expunge
+
+👉 It permanently deletes files that are currently in the Trash.
+
+🧠 How Trash works in HDFS
+
+When you delete a file using:
+
+hdfs dfs -rm /file.txt
+
+❌ It is NOT immediately deleted
+✔ It goes to a hidden Trash folder:
+
+/user/<username>/.Trash/
+🔥 Role of -expunge
+hdfs dfs -expunge
+
+✔ Clears the Trash
+✔ Permanently removes deleted files
+✔ Frees storage space
+
+📌 Example Flow
+Step 1: Delete a file
+hdfs dfs -rm /BACKUP/file1.txt
+
+👉 File goes to Trash
+
+Step 2: Empty Trash
+hdfs dfs -expunge
+
+👉 File is now permanently deleted
+
+⚠️ Important Points
+❗ After -expunge, recovery is NOT possible
+❗ Works only if Trash is enabled (fs.trash.interval > 0)
+❗ No confirmation prompt → use carefully
+🧪 Check Trash manually
+hdfs dfs -ls /user/srist/.Trash
+💡 Quick Summary
+Command	Meaning
+-rm	Moves file to Trash
+-expunge	Permanently deletes Trash
+
+✅ 1. Check Trash directory manually (Best way)
+
+Run:
+
+hdfs dfs -ls /user/srist/.Trash
+🔍 Output cases:
+✔ If Trash is EMPTY
+ls: `/user/srist/.Trash`: No such file or directory
+
+OR
+
+Found 0 items
+
+👉 Means Trash is empty ✅
+
+MD5-of-0MD5-of-512CRC32CAlgorithm: CRC32C computed per 512-byte chunk, then MD5 taken over all chunk checksums
+000002000...The hex checksum value — unique fingerprint of this file's content
+
+# ── PART A: TRASH ─────────────────────────────────────────────────────────────
+
+# Check what is sitting in the Trash before expunging
+hdfs dfs -ls /user/srist/.Trash
+
+# Empty the Trash permanently
+hdfs dfs -expunge
+
+# Check the Trash retention policy (0 = disabled)
+hdfs getconf -confKey fs.trash.interval
+
+# ── PART B: CHECKSUM ──────────────────────────────────────────────────────────
+
+# Get the checksum of a specific HDFS file
+hdfs dfs -checksum /BACKUP/file1.txt
+
+# Compare checksums of two HDFS files to check if they are identical
+hdfs dfs -checksum /BACKUP/file1.txt
+hdfs dfs -checksum /XYZ/file1.txt
