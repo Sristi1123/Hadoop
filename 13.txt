@@ -1,0 +1,98 @@
+Microsoft Windows [Version 10.0.26200.8039]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\System32>D:
+
+D:\>cd hadoopsetup\hadoop-3.2.4\sbin
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>start-all.cmd
+This script is Deprecated. Instead use start-dfs.cmd and start-yarn.cmd
+starting yarn daemons
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -mkdir /a2
+mkdir: Cannot create directory /a2. Name node is in safe mode.
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -ls /a2
+ls: `/a2': No such file or directory
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -mkdir /z2
+mkdir: Cannot create directory /z2. Name node is in safe mode.
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -mkdir /z2
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -mkdir /a2
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hadoop jar "D:\Downloads Browser\WordCount.txt" /a2/z2
+Exception in thread "main" java.io.IOException: Error opening job jar: D:\Downloads Browser\WordCount.txt
+        at org.apache.hadoop.util.RunJar.run(RunJar.java:261)
+        at org.apache.hadoop.util.RunJar.main(RunJar.java:236)
+Caused by: java.util.zip.ZipException: error in opening zip file
+        at java.util.zip.ZipFile.open(Native Method)
+        at java.util.zip.ZipFile.<init>(ZipFile.java:231)
+        at java.util.zip.ZipFile.<init>(ZipFile.java:156)
+        at java.util.jar.JarFile.<init>(JarFile.java:168)
+        at java.util.jar.JarFile.<init>(JarFile.java:105)
+        at org.apache.hadoop.util.RunJar.run(RunJar.java:259)
+        ... 1 more
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hadoop jar "D:\Downloads Browser\WordCount.txt" /a2 /z2
+Exception in thread "main" java.io.IOException: Error opening job jar: D:\Downloads Browser\WordCount.txt
+        at org.apache.hadoop.util.RunJar.run(RunJar.java:261)
+        at org.apache.hadoop.util.RunJar.main(RunJar.java:236)
+Caused by: java.util.zip.ZipException: error in opening zip file
+        at java.util.zip.ZipFile.open(Native Method)
+        at java.util.zip.ZipFile.<init>(ZipFile.java:231)
+        at java.util.zip.ZipFile.<init>(ZipFile.java:156)
+        at java.util.jar.JarFile.<init>(JarFile.java:168)
+        at java.util.jar.JarFile.<init>(JarFile.java:105)
+        at org.apache.hadoop.util.RunJar.run(RunJar.java:259)
+        ... 1 more
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -put "D:\Downloads Browser\WordCount.txt" /a2
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -ls /a2
+Found 1 items
+-rw-r--r--   1 srist supergroup       2148 2026-03-30 15:11 /a2/WordCount.txt
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hadoop jar "D:\Downloads Browser\WordCount.txt" /a2/z2
+Exception in thread "main" java.io.IOException: Error opening job jar: D:\Downloads Browser\WordCount.txt
+        at org.apache.hadoop.util.RunJar.run(RunJar.java:261)
+        at org.apache.hadoop.util.RunJar.main(RunJar.java:236)
+Caused by: java.util.zip.ZipException: error in opening zip file
+        at java.util.zip.ZipFile.open(Native Method)
+        at java.util.zip.ZipFile.<init>(ZipFile.java:231)
+        at java.util.zip.ZipFile.<init>(ZipFile.java:156)
+        at java.util.jar.JarFile.<init>(JarFile.java:168)
+        at java.util.jar.JarFile.<init>(JarFile.java:105)
+        at org.apache.hadoop.util.RunJar.run(RunJar.java:259)
+        ... 1 more
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hadoop jar "D:\Downloads Browser\WordCount.txt" /a2 /z2
+Exception in thread "main" java.io.IOException: Error opening job jar: D:\Downloads Browser\WordCount.txt
+        at org.apache.hadoop.util.RunJar.run(RunJar.java:261)
+        at org.apache.hadoop.util.RunJar.main(RunJar.java:236)
+Caused by: java.util.zip.ZipException: error in opening zip file
+        at java.util.zip.ZipFile.open(Native Method)
+        at java.util.zip.ZipFile.<init>(ZipFile.java:231)
+        at java.util.zip.ZipFile.<init>(ZipFile.java:156)
+        at java.util.jar.JarFile.<init>(JarFile.java:168)
+        at java.util.jar.JarFile.<init>(JarFile.java:105)
+        at org.apache.hadoop.util.RunJar.run(RunJar.java:259)
+        ... 1 more
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>hadoop jar "D:\Downloads Browser\WordCount.txt" /a2 /z2
+Exception in thread "main" java.io.IOException: Error opening job jar: D:\Downloads Browser\WordCount.txt
+        at org.apache.hadoop.util.RunJar.run(RunJar.java:261)
+        at org.apache.hadoop.util.RunJar.main(RunJar.java:236)
+Caused by: java.util.zip.ZipException: error in opening zip file
+        at java.util.zip.ZipFile.open(Native Method)
+        at java.util.zip.ZipFile.<init>(ZipFile.java:231)
+        at java.util.zip.ZipFile.<init>(ZipFile.java:156)
+        at java.util.jar.JarFile.<init>(JarFile.java:168)
+        at java.util.jar.JarFile.<init>(JarFile.java:105)
+        at org.apache.hadoop.util.RunJar.run(RunJar.java:259)
+        ... 1 more
+
+
+correct all this stuff
+read sum of even number program

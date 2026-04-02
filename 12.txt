@@ -1,0 +1,8 @@
+D:\hadoopsetup\hadoop-3.2.4\sbin>start-all.cmd
+
+D:\hadoopsetup\hadoop-3.2.4\sbin>jps
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -mkdir /abcd
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -put "D:\hadoopFiles\abcd.txt" /abcd
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -ls /abcd
+D:\hadoopsetup\hadoop-3.2.4\sbin>hadoop jar "D:\hadoopsetup\hadoop-3.2.4\share\hadoop\mapreduce\hadoop-mapreduce-examples-3.2.4.jar" wordcount /abcd /output1
+D:\hadoopsetup\hadoop-3.2.4\sbin>hdfs dfs -cat /output1/part-r-00000
