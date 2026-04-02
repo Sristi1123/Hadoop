@@ -1,0 +1,18 @@
+D:
+cd D:\hadoopsetup\hadoop-3.2.4\sbin
+start-all.cmd
+jps
+Step 4: Create input directory in HDFS
+    hdfs dfs -mkdir /input1
+Step 5: Upload input file to HDFS
+    hdfs dfs -put "D:\hadoopFiles\input1.txt" /input1/
+Step 6: Verify the input file content
+    hdfs dfs -cat /input1/input1.txt
+Step 7: Run the Factorial MapReduce job
+    hadoop jar "D:\hadoopFiles\jar file\factorial.jar" /input1/input1.txt /output6
+Step 8: List the output directory
+    hdfs dfs -ls /output6
+Step 9: View the result
+    hdfs dfs -cat /output6/part-r-00000
+
+    Factorial       120960 (output based on input)
