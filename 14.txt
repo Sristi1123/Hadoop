@@ -1,0 +1,9 @@
+D:
+cd D:\hadoopsetup\hadoop-3.2.4\sbin
+start-all.cmd
+jps
+hdfs dfs -mkdir /input
+hdfs dfs -put "D:\hadoopFiles\input.txt" /input
+hadoop jar "D:\hadoopFiles\jar file\a.jar" /input/input.txt /output5
+hdfs dfs -ls /output5
+hdfs dfs -cat /output5/part-r-00000
