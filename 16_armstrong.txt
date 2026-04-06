@@ -1,0 +1,47 @@
+✅ Complete Working Flow
+🔹 1. Start Hadoop
+start-all.cmd
+🔹 2. Check daemons
+jps
+
+👉 You should see:
+
+NameNode
+DataNode
+ResourceManager
+NodeManager
+🔹 3. Create input folder (HDFS)
+hdfs dfs -mkdir /inputA
+🔹 4. Upload file to HDFS
+hdfs dfs -put D:\hadoopFiles\inputB.txt /inputA/
+🔹 5. Verify input (VERY IMPORTANT)
+hdfs dfs -cat /inputA/inputB.txt
+
+👉 Output should be:
+
+153
+🔹 6. Delete old output (must do every time)
+hdfs dfs -rm -r /output7
+🔹 7. Run MapReduce job
+hadoop jar "D:\hadoopFiles\jar file\armstrong.jar" /inputA/inputB.txt /output7
+🔹 8. Check output folder
+hdfs dfs -ls /output7
+🔹 9. View final result
+hdfs dfs -cat /output7/part-r-00000
+
+👉 Final Output:
+
+Armstrong Number        153
+⚠️ Important Rules (remember)
+
+✔️ File name is case-sensitive
+✔️ Always verify input using -cat
+✔️ Always delete output folder before rerun
+
+🎯 Short Trick (for exams)
+
+👉 If output empty:
+
+Check Map input records
+If 0 → input issue
+If >0 → code issue
