@@ -1,0 +1,48 @@
+1. Started Hadoop ✔ (inside powershell-1st)
+    cd D:\hadoopsetup\hadoop-3.2.4\sbin
+    .\start-dfs.cmd
+    .\start-yarn.cmd
+2. Started Derby ✔ (inside powershell-2nd)
+    cd D:\derby\db-derby-10.14.2.0-bin\bin
+    startNetworkServer.bat
+3. Started Hive ✔(inside powershell-3rd)
+    cd D:\hive\apache-hive-3.1.2-bin\bin
+    hive
+
+4. Ran Hive queries successfully ✔
+    SHOW DATABASES;
+    CREATE DATABASE lpu;
+    USE lpu;
+    CREATE TABLE student (id INT, name STRING);
+    SHOW TABLES;
+    DESCRIBE student;
+
+✅ Step 1: Select Database
+      USE lpu;
+✅ Step 2: Create Table with ROW FORMAT
+    CREATE TABLE student_csv (
+    id INT,
+    name STRING
+    )
+    ROW FORMAT DELIMITED
+    FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n';
+✅ Step 3: Load Data
+    LOAD DATA LOCAL INPATH "D:\hive\data\student.csv"
+    INTO TABLE student_csv;
+✅ Step 4: Query Data
+    SELECT * FROM student_csv;
+
+-- Step 1: Rename table
+ALTER TABLE student_csv RENAME TO student_data;
+
+-- Step 2: Use new name
+ALTER TABLE student_data CHANGE id student_id INT;
+
+-- Step 3: Add column
+ALTER TABLE student_data ADD COLUMNS (age INT);
+
+✅TRUNCATE TABLE is used to delete all data from a table without removing its structure.
+TRUNCATE TABLE student_data;
+SELECT * FROM student_data;
+👉 Output = empty table (0 rows)
