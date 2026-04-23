@@ -1,0 +1,31 @@
+# Create a table in hive named student containing id, name, department and marks column
+ 
+a) CE students with marks >90
+b) Students not in math department
+c) students whose name starts with A 
+d) students with marks between 70 and 90 
+
+> Create table
+    CREATE TABLE student_data (
+    id INT,
+    name STRING,
+    department STRING,
+    marks INT
+    )
+    ROW FORMAT DELIMITED
+    FIELDS TERMINATED BY ',';
+
+> load table
+    LOAD DATA LOCAL INPATH 'D:/hive/data/student_data.txt'
+    INTO TABLE student_data;
+
+> Verify
+    SELECT * FROM student_data;
+
+> b)
+    SELECT * FROM student_data
+    WHERE department != 'Math';
+
+> c)
+    SELECT * FROM student_data
+    WHERE name LIKE 'A%';

@@ -26,6 +26,7 @@
     )
     ROW FORMAT DELIMITED
     FIELDS TERMINATED BY ','
+    STORE AS LOCAL txt FILE
     LINES TERMINATED BY '\n';
 ✅ Step 3: Load Data
     LOAD DATA LOCAL INPATH "D:\hive\data\student.csv"
