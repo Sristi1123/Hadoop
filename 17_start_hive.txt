@@ -9,6 +9,13 @@
     cd D:\hive\apache-hive-3.1.2-bin\bin
     hive
 
+✅✅
+start-dfs.cmd
+start-yarn.cmd
+startNetworkServer.bat
+hive
+✅✅
+
 4. Ran Hive queries successfully ✔
     SHOW DATABASES;
     CREATE DATABASE lpu;

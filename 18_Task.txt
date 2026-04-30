@@ -1,6 +1,6 @@
 # Create a table in hive named student containing id, name, department and marks column
  
-a) CE students with marks >90
+a) CE students with marks > 90
 b) Students not in math department
 c) students whose name starts with A 
 d) students with marks between 70 and 90 
@@ -29,3 +29,11 @@ d) students with marks between 70 and 90
 > c)
     SELECT * FROM student_data
     WHERE name LIKE 'A%';
+
+/**
+
+If Hive gets stuck while running queries (like insert or select), run this command before executing your query:
+
+set hive.exec.mode.local.auto=true;
+
+**/ 
