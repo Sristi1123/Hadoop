@@ -1,0 +1,47 @@
+bucketing
+
+SET hive.enforce.bucketing=true;
+
+create table st_bucket(roll_no INT, name STRING, subject STRING, marks INT, section STRING) clustered by(roll_no) into 3 buckets
+row format delimited fields terminated by ',';
+
+✅ 1. Enable bucketing
+SET hive.enforce.bucketing = true;
+✅ 2. Create bucket table
+CREATE TABLE st_bucket(
+  roll_no INT,
+  name STRING,
+  subject STRING,
+  marks INT,
+  section STRING
+)
+CLUSTERED BY (roll_no) INTO 3 BUCKETS
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ',';
+✅ 3. Insert data into bucket table
+
+⚠️ Important: Use INSERT SELECT, not direct load
+
+INSERT INTO TABLE st_bucket
+SELECT * FROM student_marks;
+✅ 4. Check data
+SELECT * FROM st_bucket;
+✅ 5. Verify bucketing (important for viva)
+SET hive.enforce.bucketing;
+
+and
+
+DESCRIBE FORMATTED st_bucket;
+
+SET hive.enforce.bucketing=true;
+
+create table st_bucket (roll_no INT, name STRING, subject STRING, marks INT, section STRING)
+   clustered by (roll_no) into 3 buckets
+     row format delimited
+     fields terminated by ',';
+insert overwrite table st_bucket select * from student_marks;
+
+
+•	Open new cmd terminal
+•	hdfs dfs -ls "/user/hive/warehouse/st_bucket"
+•	hdfs dfs -cat "/user/hive/warehouse/st_bucket/000000_0"

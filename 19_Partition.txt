@@ -1,0 +1,49 @@
+create table part_student_marks (roll_no INT,name STRING, subject STRING, marks INT)
+partitioned by (section STRING);
+
+set hive.exec.dynamic.partition.mode=nonstrict;
+INSERT OVERWRITE TABLE part_student_marks
+PARTITION(section)
+SELECT roll_no, name, subject, marks, section
+FROM student_marks;
+
+select * from part_student_marks;
+
+✅ 1. (Optional) Clean old tables
+DROP TABLE IF EXISTS student_marks;
+DROP TABLE IF EXISTS part_student_marks;
+✅ 2. Create normal table
+CREATE TABLE student_marks (
+  roll_no INT,
+  name STRING,
+  subject STRING,
+  marks INT,
+  section STRING
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ',';
+✅ 3. Load data file
+LOAD DATA LOCAL INPATH 'D:/hadoopFiles/partition.txt'
+INTO TABLE student_marks;
+✅ 4. Create partition table
+CREATE TABLE part_student_marks (
+  roll_no INT,
+  name STRING,
+  subject STRING,
+  marks INT
+)
+PARTITIONED BY (section STRING);
+✅ 5. (IMPORTANT) Avoid YARN issue
+SET mapreduce.framework.name=local;
+✅ 6. Enable dynamic partition
+SET hive.exec.dynamic.partition=true;
+SET hive.exec.dynamic.partition.mode=nonstrict;
+✅ 7. Insert into partition table
+INSERT OVERWRITE TABLE part_student_marks
+PARTITION (section)
+SELECT roll_no, name, subject, marks, section
+FROM student_marks;
+✅ 8. Verify data
+SELECT * FROM part_student_marks;
+✅ 9. Check partitions (very important)
+SHOW PARTITIONS part_student_marks;
